@@ -9,7 +9,7 @@ Order of rules:
 3. Text
 4. Other
 
-![example](src/example.png 'example')
+![example](https://github.com/Ekzisss/CssOrder/blob/master/src/example.png?raw=true 'example')
 
 ## Usage
 
@@ -22,3 +22,11 @@ Order of rules:
 ### 1.0.0
 
 Initial release of `CssOrder`
+
+## Author
+
+### Almaz Abdulhakov
+
+`github` - https://github.com/Ekzisss
+
+`telegram` - https://t.me/Ekzissss

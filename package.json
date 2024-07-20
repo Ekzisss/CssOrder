@@ -1,13 +1,18 @@
 {
-  "name": "cssOrder",
-  "displayName": "cssOrder",
-  "description": "",
+  "name": "CssOrder",
+  "displayName": "CssOrder",
+  "description": "This extension order your css rules",
   "version": "1.0.0",
   "engines": {
     "vscode": "^1.91.0"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Ekzisss/CssOrder.git"
+  },
+  "icon": "icon.png",
   "categories": [
-    "Other"
+    "Formatters"
   ],
   "activationEvents": [
     "onLanguage:css"
