@@ -11,8 +11,6 @@ export default function formatter(text: string) {
   const data: dataProps[] = [];
   let numOfRules = 0;
 
-  let blockStart: null | number = null;
-
   textArr.forEach((item, index) => {
     if (item.includes('@')) {
       return;
@@ -23,8 +21,13 @@ export default function formatter(text: string) {
     }
 
     if (item.includes('{')) {
-      if (!blockStart) {
+      if (data.length <= numOfRules) {
         data.push({ blockStart: index + 1, blockEnd: 0 });
+        return;
+      } else {
+        data[numOfRules].blockEnd = index - 1;
+        data.push({ blockStart: index + 1, blockEnd: 0 });
+        numOfRules++;
         return;
       }
     }
@@ -61,15 +64,14 @@ function reOrder(textArr: string[]) {
 
   textArr.sort((a, b) => textToSelectorToNum(b) - textToSelectorToNum(a));
 
-  const numArr = [1000, 100, 10, 1, 0];
-  let currentIndex = numArr.indexOf(textToSelectorToNum(textArr[0]));
+  let numLength = textToSelectorToNum(textArr[0]).toString().length;
 
   for (let i = 0; i < textArr.length; i++) {
-    const numOfSelector = textToSelectorToNum(textArr[i]);
+    const numLengthCur = textToSelectorToNum(textArr[i]).toString().length;
 
-    if (numOfSelector !== numArr[currentIndex]) {
+    if (numLengthCur !== numLength) {
       textArr.splice(i, 0, '');
-      currentIndex = numArr.indexOf(numOfSelector);
+      numLength = numLengthCur;
       i++;
     }
   }
@@ -87,5 +89,5 @@ function textToSelectorToNum(text: string) {
   // @ts-ignore: Unreachable code error
   const temp = tags[selector];
 
-  return temp ? temp : 0;
+  return temp ? temp : '';
 }
