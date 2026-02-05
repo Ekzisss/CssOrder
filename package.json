@@ -2,7 +2,7 @@
   "name": "CssOrder",
   "displayName": "CssOrder",
   "description": "This extension order your css rules",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "publisher": "Ekzis",
   "engines": {
     "vscode": "^1.91.0"

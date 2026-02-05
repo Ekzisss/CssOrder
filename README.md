@@ -10,7 +10,7 @@ Order of rules:
 4. Text
 5. Other
 
-![example](https://github.com/Ekzisss/CssOrder/blob/master/src/example.png?raw=true 'example')
+![example](https://github.com/Ekzisss/CssOrder/blob/master/public/example.png?raw=true 'example')
 
 ## Usage
 
