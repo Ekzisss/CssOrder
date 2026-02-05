@@ -25,9 +25,6 @@ export const reOrder = (textArr: string[]) => {
   // Свойства (только строки с :)
   const props = filtered.filter((line) => line.includes(':') && !line.includes('{'));
 
-  // Остальное (вложенные селекторы и т.п.)
-  const rest = filtered.filter((line) => !props.includes(line));
-
   props.sort((a, b) => getGroup(b) - getGroup(a));
 
   const result: string[] = [];
@@ -36,7 +33,8 @@ export const reOrder = (textArr: string[]) => {
   for (const prop of props) {
     const group = getGroup(prop);
 
-    if (prevGroup !== null && group !== prevGroup) {
+    // Добавляем пустую строку только при смене основной группы
+    if (prevGroup !== null && Math.floor(group / 100) !== Math.floor(prevGroup / 100)) {
       result.push('');
     }
 
@@ -45,5 +43,11 @@ export const reOrder = (textArr: string[]) => {
     prevGroup = group;
   }
 
-  return [...result, ...rest];
+  const isLastWhiteSpace = filtered[filtered.length - 1] === '';
+
+  if (isLastWhiteSpace) {
+    result.push('');
+  }
+
+  return result;
 };
